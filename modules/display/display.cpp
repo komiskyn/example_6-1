@@ -31,10 +31,8 @@
 #define DISPLAY_IR_FUNCTION_SET_5x10DOTS 0b00000100
 #define DISPLAY_IR_FUNCTION_SET_5x8DOTS  0b00000000
 
-#define DISPLAY_20x4_LINE1_FIRST_CHARACTER_ADDRESS 0
-#define DISPLAY_20x4_LINE2_FIRST_CHARACTER_ADDRESS 64
-#define DISPLAY_20x4_LINE3_FIRST_CHARACTER_ADDRESS 20
-#define DISPLAY_20x4_LINE4_FIRST_CHARACTER_ADDRESS 84
+#define DISPLAY_16x2_LINE1_FIRST_CHARACTER_ADDRESS 0
+#define DISPLAY_16x2_LINE2_FIRST_CHARACTER_ADDRESS 64
 
 #define DISPLAY_RS_INSTRUCTION 0
 #define DISPLAY_RS_DATA        1
@@ -140,7 +138,7 @@ void displayCharPositionWrite( uint8_t charPositionX, uint8_t charPositionY )
         case 0:
             displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
                               DISPLAY_IR_SET_DDRAM_ADDR |
-                              ( DISPLAY_20x4_LINE1_FIRST_CHARACTER_ADDRESS +
+                              ( DISPLAY_16x2_LINE1_FIRST_CHARACTER_ADDRESS +
                                 charPositionX ) );
             delay( 1 );         
         break;
@@ -148,26 +146,11 @@ void displayCharPositionWrite( uint8_t charPositionX, uint8_t charPositionY )
         case 1:
             displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
                               DISPLAY_IR_SET_DDRAM_ADDR |
-                              ( DISPLAY_20x4_LINE2_FIRST_CHARACTER_ADDRESS +
+                              ( DISPLAY_16x2_LINE2_FIRST_CHARACTER_ADDRESS +
                                 charPositionX ) );
             delay( 1 );         
         break;
        
-        case 2:
-            displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
-                              DISPLAY_IR_SET_DDRAM_ADDR |
-                              ( DISPLAY_20x4_LINE3_FIRST_CHARACTER_ADDRESS +
-                                charPositionX ) );
-            delay( 1 );         
-        break;
-
-        case 3:
-            displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
-                              DISPLAY_IR_SET_DDRAM_ADDR |
-                              ( DISPLAY_20x4_LINE4_FIRST_CHARACTER_ADDRESS +
-                                charPositionX ) );
-            delay( 1 );         
-        break;
     }
 }
 
